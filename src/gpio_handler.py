@@ -1,11 +1,11 @@
 #import adafruit_dht
+#import board
 
 class GPIO_Handler():
     def __init__(self):
-        #self.DHT_SENSOR = adafruit_dht.DHT11
+        #self.dht_sensor = adafruit_dht.DHT11(board.D4)
         self.gas_sensor_analog = 14
         self.gas_sensor_digital = 15
-        self.DHT_PIN = 4
         
         
 
@@ -13,11 +13,9 @@ class GPIO_Handler():
         pass
 
     def get_humidity(self):
-        #humidity, _ = adafruit_dht.read(self.DHT_SENSOR, self.DHT_PIN)
-        #return humidity
+        #return self.dht_sensor.humidity
         return 70
 
     def get_temperature(self):
-        #_, temperature = adafruit_dht.read(self.DHT_SENSOR, self.DHT_PIN)
-        #return temperature
+        #return adafruit_dht.temperature
         return 25
