@@ -13,9 +13,23 @@ class GPIO_Handler():
         pass
 
     def get_humidity(self):
-        #return self.dht_sensor.humidity
-        return 70
+        has_valid_result = False
+        humidity = -1
+        while not has_valid_result:
+            try:
+                #humidity = self.dht_sensor.humidity
+                has_valid_result = True
+            except:
+                continue
+        return humidity
 
     def get_temperature(self):
-        #return self.dht_sensor.temperature
-        return 25
+        has_valid_result = False
+        temperature = -1
+        while not has_valid_result:
+            try:
+                #temperature = self.dht_sensor.temperature
+                has_valid_result = True
+            except:
+                continue
+        return temperature
