@@ -17,5 +17,5 @@ class GPIO_Handler():
         return 70
 
     def get_temperature(self):
-        #return adafruit_dht.temperature
+        #return self.dht_sensor.temperature
         return 25
