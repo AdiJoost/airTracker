@@ -1,8 +1,8 @@
 from flask import Flask, render_template
 #from flask_restful import Api
 from flask_cors import CORS
-from src.db import db
-from log.logger import Logger
+from db import db
+from src.log.logger import Logger
 
 
 app = Flask(__name__)
