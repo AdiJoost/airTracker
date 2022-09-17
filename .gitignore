@@ -1,6 +1,7 @@
 #application-specific
 *.csv
 main_log.txt
+data.db
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
