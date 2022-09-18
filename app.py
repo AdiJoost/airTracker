@@ -24,8 +24,8 @@ def home():
 
 @app.route('/shutdown', methods=['GET'])
 def shutdown():
-    board_controller.stop_daemon_thread()
-    return "daemon is dead"
+    board_controller.stop_messurments()
+    return Board_Controller.get_instance().thread_controls
 
 
 
@@ -36,7 +36,7 @@ if __name__ == "__main__":
     db.init_app(app)
     
     #start daemon_thread
-    board_controller.start_daemon_thread()
+    board_controller.start_messurments(2)
 
     #start app
     app.run(port=5000, host="0.0.0.0", debug=True)

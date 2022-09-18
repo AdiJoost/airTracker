@@ -9,11 +9,13 @@ import time
 from datetime import datetime
 from log.logger import Logger
 from src.gpio_handler import GPIO_Handler
+from src.measurments_thread import Measurment_Thread
+
+
 
 class Board_Controller():
     __instance = None
-    thread_controls = {"shutdown": False,
-                        "lightshow": False}
+    
     
     @staticmethod
     def get_instance():
@@ -30,45 +32,29 @@ class Board_Controller():
         else:
             Board_Controller.__instance = self
             self.GPIO_Handler = GPIO_Handler()
-            self.stop_event = threading.Event()
-            self.kill_daemon = False
-            self.shared_data = Queue()
-            thread_controls = {"shutdown": False,
-                                "lightshow": False}
-            self.shared_data.put(thread_controls)
+            self.thread_controls = {"shutdown": False,
+                                    "lightshow": False,
+                                    "counter": 1}
+            self.measurment_thread = Measurment_Thread(self.GPIO_Handler, self.thread_controls)
 
             
-    def start_daemon_thread(self):
-        """starts deamon_thread to execute orders in self.queue. Deamon will
-        check after given intervall for new orders and executes them"""
+    def start_messurments(self, intervall):
+        self.measurment_thread.start()
+        """
         try:
-            Logger.log(__name__, "setup Deamon", "daemon_log.txt")
-            self.deamon_thread = threading.Thread(target=self.run_queue,
-                                                  args=(self.shared_data, self.thread_controls))
+            Logger.log(__name__, "setup meassurments thread", "meassurments_log.txt")
+            self.deamon_thread = threading.Thread(target=self.measurment_thread.run,
+                                                  args=(self.thread_controls,))
             self.deamon_thread.start()
-            Logger.log(__name__, "Deamon is running", "daemon_log.txt")
+            Logger.log(__name__, "Deamon is running", "meassurments_log.txt")
         except Exception as e:
-            Logger.log(__name__, str(e), "error_log.txt", "daemon_log.txt")
+            Logger.log(__name__, str(e), "error_log.txt")"""
     
-    def stop_daemon_thread(self):
-        controls = self.shared_data.get()
-        controls["shutdown"] = True
-        self.thread_controls["shutdown"] = True
-        self.shared_data.put(controls)
-        #self.deamon_thread.join()
-        Logger.log(__name__, "Daemon is dead - Well, it does not listen to me so it is still alive, give it some space", "daemon_log.txt")
+    def stop_messurments(self):
+        self.measurment_thread.stop()
+        pass
 
-    def start_lightshow(self):
-        """starts a thread with a lightshow"""
-        try:
-            Logger.log(__name__, "setup Deamon", "daemon_log.txt")
-            self.lightshow = threading.Thread(target=self.light_up,
-                                                  args=())
-            self.lightshow.start()
-            Logger.log(__name__, "lightshow is running")
-        except Exception as e:
-            Logger.log(__name__, str(e), "error_log.txt")
-
+   
     def run_queue (self, queue, thread_controls):
         Logger.log(__name__, "Queue started", "daemon_log.txt")
         is_shutdown = False
@@ -85,6 +71,7 @@ class Board_Controller():
             is_shutdown = controls["shutdown"]
             queue.put(controls)
             try:
+                    thread_controls["counter"] += 1
                     record_time = datetime.now()
                     data = (self.GPIO_Handler.get_temperature(),
                             self.GPIO_Handler.get_humidity(),

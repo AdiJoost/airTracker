@@ -1,54 +1,16 @@
-Log-File for Air-Tracker. Created: 2022-09-18T14:12:06.091259
+Log-File for Air-Tracker. Created: 2022-09-18T15:08:12.137764
 
-[src.Board_Controller] setup Deamon -- 2022-09-18T14:12:06.091259
-[src.Board_Controller] Deamon is running -- 2022-09-18T14:12:06.092232
-[src.Board_Controller] Queue started -- 2022-09-18T14:12:06.092232
-[src.Board_Controller] setup Deamon -- 2022-09-18T14:12:06.743110
-[src.Board_Controller] Queue started -- 2022-09-18T14:12:06.743110
-[src.Board_Controller] Deamon is running -- 2022-09-18T14:12:06.743110
-[src.Board_Controller] Daemon is dead - Well, due to a unknown bug, it is still alive, give it some space -- 2022-09-18T14:12:43.394500
-[src.Board_Controller] setup Deamon -- 2022-09-18T14:14:48.201167
-[src.Board_Controller] Queue started -- 2022-09-18T14:14:48.202137
-[src.Board_Controller] Deamon is running -- 2022-09-18T14:14:48.202137
-[src.Board_Controller] setup Deamon -- 2022-09-18T14:14:48.799447
-[src.Board_Controller] Queue started -- 2022-09-18T14:14:48.799447
-[src.Board_Controller] Deamon is running -- 2022-09-18T14:14:48.799447
-[src.Board_Controller] setup Deamon -- 2022-09-18T14:15:46.094820
-[src.Board_Controller] Deamon is running -- 2022-09-18T14:15:46.095792
-[src.Board_Controller] Queue started -- 2022-09-18T14:15:46.095792
-[src.Board_Controller] setup Deamon -- 2022-09-18T14:16:59.809366
-[src.Board_Controller] Queue started -- 2022-09-18T14:16:59.810823
-[src.Board_Controller] Deamon is running -- 2022-09-18T14:16:59.810823
-[src.Board_Controller] Que has: {'shutdown': False, 'lightshow': False} -- 2022-09-18T14:16:59.811816
-[src.Board_Controller] Daemon is dead - Well, due to a unknown bug, it is still alive, give it some space -- 2022-09-18T14:17:08.885237
-[src.Board_Controller] Daemon is dead - Well, due to a unknown bug, it is still alive, give it some space -- 2022-09-18T14:17:18.515031
-[src.Board_Controller] setup Deamon -- 2022-09-18T14:17:51.093299
-[src.Board_Controller] Deamon is running -- 2022-09-18T14:17:51.093299
-[src.Board_Controller] Queue started -- 2022-09-18T14:17:51.094262
-[src.Board_Controller] Que has: {'shutdown': False, 'lightshow': False} -- 2022-09-18T14:17:51.094262
-[src.Board_Controller] setup Deamon -- 2022-09-18T14:17:51.711819
-[src.Board_Controller] Queue started -- 2022-09-18T14:17:51.711819
-[src.Board_Controller] Deamon is running -- 2022-09-18T14:17:51.712818
-[src.Board_Controller] Que has: {'shutdown': False, 'lightshow': False} -- 2022-09-18T14:17:51.712818
-[src.Board_Controller] Daemon is dead - Well, due to a unknown bug, it is still alive, give it some space -- 2022-09-18T14:18:00.475783
-[src.Board_Controller] setup Deamon -- 2022-09-18T14:19:46.808285
-[src.Board_Controller] Queue started -- 2022-09-18T14:19:46.808285
-[src.Board_Controller] Deamon is running -- 2022-09-18T14:19:46.808285
-[src.Board_Controller] Que has: {'shutdown': False, 'lightshow': False} -- 2022-09-18T14:19:46.809282
-[src.Board_Controller] setup Deamon -- 2022-09-18T14:19:47.432534
-[src.Board_Controller] Queue started -- 2022-09-18T14:19:47.432534
-[src.Board_Controller] Deamon is running -- 2022-09-18T14:19:47.432534
-[src.Board_Controller] Que has: {'shutdown': False, 'lightshow': False} -- 2022-09-18T14:19:47.433528
-[src.Board_Controller] Daemon is dead - Well, due to a unknown bug, it is still alive, give it some space -- 2022-09-18T14:19:54.649317
-[src.Board_Controller] Daemon is dead - Well, due to a unknown bug, it is still alive, give it some space -- 2022-09-18T14:20:05.367982
-[src.Board_Controller] Daemon is dead - Well, due to a unknown bug, it is still alive, give it some space -- 2022-09-18T14:20:14.774309
-[src.Board_Controller] setup Deamon -- 2022-09-18T14:30:29.416303
-[src.Board_Controller] Deamon is running -- 2022-09-18T14:30:29.417301
-[src.Board_Controller] Queue started -- 2022-09-18T14:30:29.417301
-[src.Board_Controller] Que has: {'shutdown': False, 'lightshow': False} -- 2022-09-18T14:30:29.417301
-[src.Board_Controller] setup Deamon -- 2022-09-18T14:30:30.058024
-[src.Board_Controller] Queue started -- 2022-09-18T14:30:30.059020
-[src.Board_Controller] Deamon is running -- 2022-09-18T14:30:30.059020
-[src.Board_Controller] Que has: {'shutdown': False, 'lightshow': False} -- 2022-09-18T14:30:30.059020
-[src.Board_Controller] Daemon is dead - Well, due to a unknown bug, it is still alive, give it some space -- 2022-09-18T14:30:40.979113
-[src.Board_Controller] Daemon is dead - Well, due to a unknown bug, it is still alive, give it some space -- 2022-09-18T14:30:54.199091
+[src.measurments_thread] Queue started -- 2022-09-18T15:08:12.138772
+[src.measurments_thread] Queue started -- 2022-09-18T15:08:12.751322
+[src.measurments_thread] Queue started -- 2022-09-18T15:15:54.930356
+[src.measurments_thread] Queue started -- 2022-09-18T15:15:55.515319
+[src.measurments_thread] Queue started -- 2022-09-18T15:17:26.212506
+[src.measurments_thread] Queue started -- 2022-09-18T15:17:26.810854
+[src.measurments_thread] Queue started -- 2022-09-18T15:28:15.094421
+[src.measurments_thread] Queue started -- 2022-09-18T15:28:15.661818
+[src.measurments_thread] Queue started -- 2022-09-18T15:30:51.868659
+[src.measurments_thread] Queue started -- 2022-09-18T15:30:52.445335
+[src.measurments_thread] Queue started -- 2022-09-18T15:32:32.032134
+[src.measurments_thread] Queue started -- 2022-09-18T15:32:32.613408
+[src.measurments_thread] Queue started -- 2022-09-18T15:33:36.082445
+[src.measurments_thread] Queue started -- 2022-09-18T15:34:46.701809
