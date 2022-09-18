@@ -15,13 +15,11 @@ app.secret_key = "superKevin"
 @app.before_first_request
 def create_table():
     db.create_all()
-    #create instance of Pump_controller
-    Logger.log(__name__, "setup pumpcontroller")
-    Logger.log(__name__, "setup completed\n*****************************")
 
 @app.route('/', methods=['GET'])
 def home():
     return render_template("index.html")
+
 
 
 if __name__ == "__main__":

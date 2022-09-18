@@ -1,0 +1,7 @@
+Log-File for Air-Tracker. Created: 2022-09-18T12:53:09.194304
+
+[Board_Controller] setup Deamon -- 2022-09-18T12:53:09.194304
+[Board_Controller] Deamon is running -- 2022-09-18T12:53:09.194304
+[Board_Controller] Stopping daemon-thread -- 2022-09-18T12:53:19.201894
+[Board_Controller] Event set -- 2022-09-18T12:53:19.201894
+[Board_Controller] Daemon is dead -- 2022-09-18T12:53:19.232212
