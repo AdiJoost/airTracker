@@ -1,4 +1,3 @@
-Adafruit_DHT
 flask
 flask-RESTful>0.3.8
 flask_sqlalchemy
