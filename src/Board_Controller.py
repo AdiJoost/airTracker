@@ -39,7 +39,10 @@ class Board_Controller():
 
             
     def start_messurments(self, intervall):
-        self.measurment_thread.start()
+        try:
+            self.measurment_thread.start()
+        except Exception as e:
+            Logger.log(__name__, str(e), "error_log.txt")
         """
         try:
             Logger.log(__name__, "setup meassurments thread", "meassurments_log.txt")
