@@ -23,13 +23,14 @@ class Measurment_Thread():
             Logger.log(__name__, str(e), "error_log.txt")
 
     def run (self, thread_controls, queue):
-            Logger.log(__name__, "Queue started", "daemon_log.txt")
+            Logger.log(__name__, "run() called", "daemon_log.txt")
             is_stop = False
-            for i in range (10):
+            while not is_stop:
                 try:
                     controls = queue.get(block=False)
-                    Logger.log(__name__, f"Got a queue :) {controls}")
+                    Logger.log(__name__, f"Got a queue :) {controls}", "error_log.txt")
                     if controls["shutdown"]:
+                        Logger.log(__name__, f"is_stop is set {controls}", "error_log.txt")
                         is_stop = True
                         continue
                 except:
@@ -48,6 +49,7 @@ class Measurment_Thread():
                         time.sleep(2)
                 except Exception as e:
                     Logger.log(__name__, str(e), "error_log.txt")
+            Logger.log(__name__, f"While-loop exited", "error_log.txt")
     
     def stop(self):
         Logger.log(__name__, "Put something in queue")
