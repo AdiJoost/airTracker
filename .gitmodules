@@ -1,0 +1,3 @@
+[submodule "src/external_source/fileLocker"]
+	path = src/external_source/fileLocker
+	url = https://github.com/dmfrey/FileLock.git
