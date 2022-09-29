@@ -10,16 +10,17 @@ def main():
     print("Main started")
     Logger.log(__name__, "Tester started")
     thread_1 = threading.Thread(target=ask_controller, args=(1,))
-    thread_2 = threading.Thread(target=ask_controller, args=(2,))
+    thread_2 = threading.Thread(target=ask_controller, args=(2,1))
     thread_1.start()
     thread_2.start()
 
 
-def ask_controller(number):
+def ask_controller(number, timeo=2):
     print(f"Controler {number} started")
     gc = Global_Controller()
     data = gc.get()
-    gc.update("shutdown", True)
+    time.sleep(timeo)
+    gc.update("Hello", True)
     print(data)
     print(type(data))
 
