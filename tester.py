@@ -3,11 +3,27 @@ from log.logger import Logger
 import time
 from global_controller.global_controller import Global_Controller
 import datetime
+import threading
+import json
 
 def main():
     print("Main started")
     Logger.log(__name__, "Tester started")
-    global_controller = Global_Controller()
+    thread_1 = threading.Thread(target=ask_controller, args=(1,))
+    thread_2 = threading.Thread(target=ask_controller, args=(2,))
+    thread_1.start()
+    thread_2.start()
+
+
+def ask_controller(number):
+    print(f"Controler {number} started")
+    gc = Global_Controller()
+    data = gc.get()
+    gc.update("shutdown", True)
+    print(data)
+    print(type(data))
+
+    
     """
     gpio_handler = GPIO_Handler()
     while True:
