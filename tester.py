@@ -1,11 +1,13 @@
-from asyncio.log import logger
 #from Board_Controller import Board_Controller
 from log.logger import Logger
 import time
+from global_controller.global_controller import Global_Controller
 import datetime
-from src.external_source.fileLocker.filelock.filelock import FileLock
 
 def main():
+    print("Main started")
+    Logger.log(__name__, "Tester started")
+    global_controller = Global_Controller()
     """
     gpio_handler = GPIO_Handler()
     while True:
@@ -23,11 +25,11 @@ def main():
     time.sleep(5)
     board_controller.stop_daemon_thread()
     Logger.log(__name__, "Going to stop")
-    """
+    
     for _ in range(10):
         with FileLock("requirements.txt"):
             print("File open")
-        print("file closed")
+        print("file closed")"""
 
 if __name__ == "__main__":
     main()

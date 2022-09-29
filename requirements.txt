@@ -2,3 +2,4 @@ flask
 flask-RESTful>0.3.8
 flask_sqlalchemy
 flask-cors
+filelock
