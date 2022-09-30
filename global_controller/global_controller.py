@@ -28,6 +28,15 @@ class Global_Controller():
                 data = file.read()
         return json.loads(data)
 
+    def get_arg(self, key):
+        with self.file_lock:
+            with open(self.file_path, "r") as file:
+                data = json.loads(file.read())
+        if key in data.keys():
+            return data[key]
+        else:
+            Logger.log(__name__, f"Asked global Controller for non existing key({key})")
+
     def append(self, data):
         with self.file_lock:
             with open(self.file_path, "a") as file:

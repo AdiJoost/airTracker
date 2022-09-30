@@ -7,12 +7,9 @@ import threading
 import json
 
 def main():
-    print("Main started")
-    Logger.log(__name__, "Tester started")
-    thread_1 = threading.Thread(target=ask_controller, args=(1,))
-    thread_2 = threading.Thread(target=ask_controller, args=(2,1))
-    thread_1.start()
-    thread_2.start()
+    my_dic = {"shutdown": True}
+    g = my_dic["Hello"]
+    print(g)
 
 
 def ask_controller(number, timeo=2):

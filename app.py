@@ -20,6 +20,9 @@ global_controller = Global_Controller()
 @app.before_first_request
 def create_table():
     db.create_all()
+    #start daemon_thread
+    board_controller.start_messurments(2)
+    set_global_controller(global_controller)
 
 @app.route('/', methods=['GET'])
 def home():
@@ -28,7 +31,7 @@ def home():
 @app.route('/shutdown', methods=['GET'])
 def shutdown():
     global_controller.update(Global_Controller.SHUTDOWN, True)
-    return Board_Controller.get_instance().thread_controls
+    return "shutdown"
 
 
 
@@ -36,13 +39,8 @@ if __name__ == "__main__":
     Logger.log(__name__, "\n*****************************\n"\
                "Start application")
 
-    set_global_controller(global_controller)
-
     #setup DB
     db.init_app(app)
     
-    #start daemon_thread
-    board_controller.start_messurments(2)
-
     #start app
     app.run(port=5000, host="0.0.0.0", debug=True)
