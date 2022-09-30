@@ -9,6 +9,8 @@ from log.logger import Logger
 import json
 
 class Global_Controller():
+    SHUTDOWN = "shutdown"
+
     def __init__(self):
         self.lock_path = self.get_file_path("controls.json.lock")
         self.file_path = self.get_file_path("controls.json")

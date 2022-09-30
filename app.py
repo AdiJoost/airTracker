@@ -4,6 +4,8 @@ from flask_cors import CORS
 from db import db
 from log.logger import Logger
 from src.Board_Controller import Board_Controller
+from global_controller.global_controller import Global_Controller
+from src.my_utils import set_global_controller
 
 
 app = Flask(__name__)
@@ -12,6 +14,7 @@ app.config['SQLALCHEMY_DATABASE_URI'] = "sqlite:///data.db"
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 app.secret_key = "superKevin"
 board_controller = Board_Controller()
+global_controller = Global_Controller()
 #api = Api(app)
 
 @app.before_first_request
@@ -24,7 +27,7 @@ def home():
 
 @app.route('/shutdown', methods=['GET'])
 def shutdown():
-    board_controller.stop_messurments()
+    global_controller.update(Global_Controller.SHUTDOWN, True)
     return Board_Controller.get_instance().thread_controls
 
 
@@ -32,6 +35,9 @@ def shutdown():
 if __name__ == "__main__":
     Logger.log(__name__, "\n*****************************\n"\
                "Start application")
+
+    set_global_controller(global_controller)
+
     #setup DB
     db.init_app(app)
     
