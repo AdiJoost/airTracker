@@ -1,6 +1,15 @@
+"""
+GPIO_handler handles all interactions with the GPIO on PI.
+Since it is not thread-Safe, make sure, that every method is 
+only used in one script.
+"""
+
 #import adafruit_dht
 #import board
+#from gpio_calls import read_co2_sensor
 from random import randint
+from log.logger import Logger
+
 
 class GPIO_Handler():
     def __init__(self):
@@ -24,13 +33,15 @@ class GPIO_Handler():
                 continue
         return humidity
 
-    def get_temperature(self):
-        has_valid_result = False
-        temperature = randint(17,35)
-        while not has_valid_result:
-            try:
-                #temperature = self.dht_sensor.temperature
-                has_valid_result = True
-            except:
-                continue
-        return temperature
+    def read_co2(self):
+        data = {
+        "co2" : -1,
+        "temerature" : -1,
+        "pressure" : -1,
+        "valid" : False
+        }
+#        data = read_co2_sensor()
+        if data == -1:
+            Logger.log(__name__, "timeout on reading Co2 sensor", "error_log.txt")
+        return data
+    

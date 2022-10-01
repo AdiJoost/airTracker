@@ -17,6 +17,8 @@ class Global_Controller():
     MEASURMENT_UPDATE = "measurment_update"
     HUMIDITY = "humidity"
     TEMPERATURE = "temperature"
+    CO2 = "co2"
+    PRESSURE = "pressure"
 
     def __init__(self):
         self.lock_path = self.get_file_path("controls.json.lock")
