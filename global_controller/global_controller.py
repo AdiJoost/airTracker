@@ -11,6 +11,12 @@ import json
 class Global_Controller():
     SHUTDOWN = "shutdown"
     BLINKING_SHOW = "blinking_show"
+    #Resolution of Measurments in seconds
+    MEASURMENT_INTERVALL = "measurment_intervall"
+    #How many measurments pass before updating controls.json
+    MEASURMENT_UPDATE = "measurment_update"
+    HUMIDITY = "humidity"
+    TEMPERATURE = "temperature"
 
     def __init__(self):
         self.lock_path = self.get_file_path("controls.json.lock")

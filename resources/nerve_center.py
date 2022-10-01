@@ -10,7 +10,9 @@ from global_controller.global_controller import Global_Controller
 
 class Nerve_Center(Resource):
     def get(self):
-        pass
+        gc = Global_Controller()
+        data = gc.get()
+        return create_response(data, 200)
 
     def post (self):
         parser = self.get_post_parser()
