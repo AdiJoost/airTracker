@@ -35,9 +35,9 @@ class GPIO_Handler():
 
     def read_co2(self):
         data = {
-        "co2" : -1,
-        "temerature" : -1,
-        "pressure" : -1,
+        "co2" : 1500,
+        "temerature" : 22.5,
+        "pressure" : 911.2,
         "valid" : False
         }
 #        data = read_co2_sensor()
