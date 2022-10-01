@@ -13,3 +13,5 @@ On the Raspberry PI(I used RaspberryOS 64 lite):
 -sudo apt-get install libgpiod2
 -remove # in gpio_handler
 
+-on the pi, enable I2C
+
