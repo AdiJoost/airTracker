@@ -1,12 +1,12 @@
 from flask import Flask, render_template
-#from flask_restful import Api
+from flask_restful import Api
 from flask_cors import CORS
 from db import db
 from log.logger import Logger
 from src.Board_Controller import Board_Controller
 from global_controller.global_controller import Global_Controller
 from src.my_utils import set_global_controller
-
+from resources.nerve_center import Nerve_Center
 
 app = Flask(__name__)
 CORS(app)
@@ -15,7 +15,7 @@ app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 app.secret_key = "superKevin"
 board_controller = Board_Controller()
 global_controller = Global_Controller()
-#api = Api(app)
+api = Api(app)
 
 @app.before_first_request
 def create_table():
@@ -33,7 +33,7 @@ def shutdown():
     global_controller.update(Global_Controller.SHUTDOWN, True)
     return "shutdown"
 
-
+api.add_resource(Nerve_Center, "/nerveCenter")
 
 if __name__ == "__main__":
     Logger.log(__name__, "\n*****************************\n"\

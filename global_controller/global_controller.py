@@ -10,12 +10,12 @@ import json
 
 class Global_Controller():
     SHUTDOWN = "shutdown"
+    BLINKING_SHOW = "blinking_show"
 
     def __init__(self):
         self.lock_path = self.get_file_path("controls.json.lock")
         self.file_path = self.get_file_path("controls.json")
         self.file_lock = FileLock(self.lock_path, 3600)
-        Logger.log(__name__, "Controller instantiated")
         
     def get_file_path(self, file):
         my_path = os.getcwd().split("airTracker", 1)[0]
@@ -49,7 +49,7 @@ class Global_Controller():
                 old_data = json.loads(file.read())
             old_data[key] = data
             self.overwrite(old_data)
-        return old_data
+        return {key: old_data[key]}
 
     
     def overwrite(self, data=""):
