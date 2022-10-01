@@ -1,5 +1,6 @@
 #import adafruit_dht
 #import board
+from random import randint
 
 class GPIO_Handler():
     def __init__(self):
@@ -14,7 +15,7 @@ class GPIO_Handler():
 
     def get_humidity(self):
         has_valid_result = False
-        humidity = -1
+        humidity = randint(30,60)
         while not has_valid_result:
             try:
                 #humidity = self.dht_sensor.humidity
@@ -25,7 +26,7 @@ class GPIO_Handler():
 
     def get_temperature(self):
         has_valid_result = False
-        temperature = -1
+        temperature = randint(17,35)
         while not has_valid_result:
             try:
                 #temperature = self.dht_sensor.temperature
