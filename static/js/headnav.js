@@ -25,7 +25,7 @@ jQuery.fn.navigationBar = function(){
         let row = $.parseHTML('<div class="row"></div>');
             let col = $.parseHTML('<div class="col-md-3"></div>');
             $(row).append(get_navbutton("Home", "btn-primary", baseUrl.concat("/")));
-            $(row).append(get_navbutton("Shutdown", "btn-danger", baseUrl.concat("/shutdown")));
+            $(row).append(get_navbutton("Shutdown", "btn-danger", baseUrl.concat("/")));
             $(row).append(get_navbutton("About", "btn-info", baseUrl.concat("/")));
             $(row).append(get_navbutton("Spreadsheets", "btn-warning", baseUrl.concat("/")));
         $(container).append(row);

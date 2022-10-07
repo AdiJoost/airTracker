@@ -28,10 +28,6 @@ def create_table():
 def home():
     return render_template("index.html")
 
-@app.route('/shutdown', methods=['GET'])
-def shutdown():
-    global_controller.update(Global_Controller.SHUTDOWN, True)
-    return "shutdown"
 
 api.add_resource(Nerve_Center, "/nerveCenter")
 
