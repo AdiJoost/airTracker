@@ -24,6 +24,7 @@ class Nerve_Center(Resource):
                 transform = gc.update(key, data[key])
                 return_value.update(transform)
         return_value["message"] = "Components updated"
+        return_value["data"] = data
         create_response(return_value, 200)
 
         
