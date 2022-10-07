@@ -38,12 +38,16 @@ class Measurment_Thread():
                 if (controls[Global_Controller.SHUTDOWN] == True):
                     is_stop = True
                 
+                readout = self.GPIO_Handler.read_co2()
+
                 record_time = datetime.now()
-                data = (self.GPIO_Handler.get_temperature(),
-                                self.GPIO_Handler.get_humidity(),
-                                record_time.hour,
-                                record_time.minute,
-                                record_time.second,)
+                data = (readout["temerature"],
+                        self.GPIO_Handler.get_humidity(),
+                        readout["pressure"],
+                        readout["co2"],
+                        record_time.hour,
+                        record_time.minute,
+                        record_time.second,)
                 Logger.log_csv(data, f"{record_time.year}-{record_time.month}-{record_time.day}")
                 counter += 1
                 if (counter == update_intervall):
@@ -59,5 +63,7 @@ class Measurment_Thread():
     def call_nerves(self, data):
         self.gc.update(Global_Controller.TEMPERATURE, data[0])
         self.gc.update(Global_Controller.HUMIDITY, data[1])
+        self.gc.update(Global_Controller.PRESSURE, data[2])
+        self.gc.update(Global_Controller.CO2, data[3])
 
     

@@ -2,6 +2,8 @@ import os.path
 from datetime import datetime
 
 class Logger():
+    csv_header = \
+    "Temperature,Humidity,Pressure,Co2,Hour,Minute,Second\n"
     def __init__(self):
         pass
     
@@ -31,7 +33,7 @@ class Logger():
         #write to file
         if not os.path.exists(my_path):
             with open(my_path, "w", encoding=("UTF-8")) as f:
-                pass
+                f.write(cls.csv_header)
         with open(my_path, "a", encoding=("UTF-8")) as f:
             f.write(entry)
 
