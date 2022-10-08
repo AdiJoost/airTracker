@@ -6,7 +6,7 @@ only used in one script.
 
 #import adafruit_dht
 #import board
-#from gpio_calls import read_co2_sensor, gpio_setup
+#from src.gpio_calls import read_co2_sensor, gpio_setup
 from random import randint
 from log.logger import Logger
 
@@ -14,8 +14,8 @@ from log.logger import Logger
 class GPIO_Handler():
     def __init__(self):
         #self.dht_sensor = adafruit_dht.DHT11(board.D21)
-        self.setup()
         self.dht_power = 20
+        self.setup()
         
         
         
