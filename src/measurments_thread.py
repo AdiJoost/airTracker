@@ -25,6 +25,7 @@ class Measurment_Thread():
         self.deamon_thread.join(20)
 
     def run (self):
+        self.gc.update(Global_Controller.MEASURE_DEMON, True)
         try:
             is_stop = False
             intervall = self.gc.get_arg(Global_Controller.MEASURMENT_INTERVALL)
@@ -56,6 +57,8 @@ class Measurment_Thread():
                 time.sleep(intervall)
         
             Logger.log(__name__, f"Deamon is dead")
+            self.gc.update(Global_Controller.MEASURE_DEMON, False)
+
         except Exception as e:
             Logger.log(__name__, e.args, "error_log.txt")
         

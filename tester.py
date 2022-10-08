@@ -2,14 +2,21 @@
 from log.logger import Logger
 import time
 from global_controller.global_controller import Global_Controller
+from src.gpio_handler import GPIO_Handler
 import datetime
 import threading
 import json
 
 def main():
-    my_dic = {"shutdown": True}
-    g = my_dic["Hello"]
-    print(g)
+    
+    gh = GPIO_Handler()
+    while True:
+        read_dht(gh)
+        time.sleep(2)
+
+def read_dht(gh):
+    print(gh.get_humidity())
+
 
 
 def ask_controller(number, timeo=2):

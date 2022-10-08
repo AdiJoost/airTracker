@@ -19,6 +19,7 @@ class Global_Controller():
     TEMPERATURE = "temperature"
     CO2 = "co2"
     PRESSURE = "pressure"
+    MEASURE_DEMON = "measure_deamon"
 
     def __init__(self):
         self.lock_path = self.get_file_path("controls.json.lock")

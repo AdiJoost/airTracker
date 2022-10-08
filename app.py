@@ -28,6 +28,10 @@ def create_table():
 def home():
     return render_template("index.html")
 
+@app.route('/controls', methods=['GET'])
+def controls():
+    return render_template("controls.html")
+
 
 api.add_resource(Nerve_Center, "/nerveCenter")
 

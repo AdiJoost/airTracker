@@ -6,21 +6,23 @@ only used in one script.
 
 #import adafruit_dht
 #import board
-#from gpio_calls import read_co2_sensor
+#from gpio_calls import read_co2_sensor, gpio_setup
 from random import randint
 from log.logger import Logger
 
 
 class GPIO_Handler():
     def __init__(self):
-        #self.dht_sensor = adafruit_dht.DHT11(board.D4)
-        self.gas_sensor_analog = 14
-        self.gas_sensor_digital = 15
+        #self.dht_sensor = adafruit_dht.DHT11(board.D21)
+        self.setup()
+        self.dht_power = 20
+        
         
         
 
     def setup(self):
-        pass
+#        gpio_setup(self.dht_power)
+        return 1
 
     def get_humidity(self):
         has_valid_result = False

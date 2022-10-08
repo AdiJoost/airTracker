@@ -4,6 +4,7 @@ reduce amount of # needed to be removed for pi setup
 """
 from smbus import SMBus
 import time
+import RPi.GPIO as GPIO
 
 def read_co2_sensor():
     #The way the co2 sensor is read out is
@@ -38,4 +39,7 @@ def read_co2_sensor():
         time.sleep(1)
     return -1
     
-            
+def gpio_setup(dht_power):
+    GPIO.setmode(GPIO.BCM)
+    GPIO.setup(dht_power, GPIO.OUT)
+    GPIO.output(dht_power, GPIO.HIGH)
