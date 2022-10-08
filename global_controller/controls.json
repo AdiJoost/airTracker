@@ -1,1 +1,1 @@
-{"shutdown": true, "blinking_show": true, "measurment_intervall": 2, "measurment_update": 5, "humidity": 54, "temperature": 22.5, "pressure": 911.2, "co2": 1500, "measure_deamon": false}
+{"shutdown": false, "blinking_show": true, "measurment_intervall": 2, "measurment_update": 5, "humidity": 32, "temperature": 22.5, "pressure": 911.2, "co2": 1500, "measure_deamon": true}

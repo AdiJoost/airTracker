@@ -21,8 +21,9 @@ api = Api(app)
 def create_table():
     db.create_all()
     #start daemon_thread
-    board_controller.start_messurments(2)
     set_global_controller(global_controller)
+    board_controller.start_messurments(2)
+    
 
 @app.route('/', methods=['GET'])
 def home():
