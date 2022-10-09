@@ -11,8 +11,9 @@ def main():
     
     gh = GPIO_Handler()
     while True:
-        read_dht(gh)
-        time.sleep(2)
+        
+        gh.blink()
+        
 
 def read_dht(gh):
     print(gh.get_humidity())
