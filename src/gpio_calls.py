@@ -38,8 +38,15 @@ def read_co2_sensor():
             return return_data
         time.sleep(1)
     return -1
-    
-def gpio_setup(dht_power):
+
+def blinkMe():
+    GPIO.output(20, False)
+    GPIO.output(21, False)
+    GPIO.output(16, False)
+
+def gpio_setup():
     GPIO.setmode(GPIO.BCM)
-    GPIO.setup(dht_power, GPIO.OUT)
-    GPIO.output(dht_power, GPIO.HIGH)
+    GPIO.setup(20, GPIO.OUT)
+    GPIO.setup(21, GPIO.OUT)
+    GPIO.setup(16, GPIO.OUT)
+    

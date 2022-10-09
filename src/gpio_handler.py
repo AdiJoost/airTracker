@@ -14,14 +14,17 @@ from log.logger import Logger
 class GPIO_Handler():
     def __init__(self):
         #self.dht_sensor = adafruit_dht.DHT11(board.D21)
-        self.dht_power = 20
+        
+
         self.setup()
         
         
-        
+
+
 
     def setup(self):
-#        gpio_setup(self.dht_power)
+#        gpio_setup()
+
         return 1
 
     def get_humidity(self):

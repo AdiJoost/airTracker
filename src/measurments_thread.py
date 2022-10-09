@@ -33,6 +33,7 @@ class Measurment_Thread():
             counter = 0
 
             while not is_stop:
+                self.gc.update(Global_Controller.MEASURE_DEMON, True)
                 controls = self.gc.get()
                 intervall = controls[Global_Controller.MEASURMENT_INTERVALL]
                 update_intervall = controls[Global_Controller.MEASURMENT_UPDATE]

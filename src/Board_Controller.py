@@ -8,6 +8,7 @@ from datetime import datetime
 from log.logger import Logger
 from src.gpio_handler import GPIO_Handler
 from src.measurments_thread import Measurment_Thread
+from global_controller.global_controller import Global_Controller
 
 
 
@@ -31,6 +32,7 @@ class Board_Controller():
             Board_Controller.__instance = self
             self.GPIO_Handler = GPIO_Handler()
             self.measurment_thread = Measurment_Thread(self.GPIO_Handler)
+            
 
             
     def start_messurments(self, intervall):
@@ -44,3 +46,12 @@ class Board_Controller():
         self.measurment_thread.stop()
         pass
 
+    def is_messurment_online(self):
+        gc = Global_Controller()
+        is_online = gc.get_arg(Global_Controller.MEASURE_DEMON)
+        if not is_online:
+            return False
+        gc.update(Global_Controller.MEASURE_DEMON, False)
+        time.sleep(int(gc.get_arg(Global_Controller.MEASURMENT_INTERVALL)) + 1)
+        return gc.get_arg(Global_Controller.MEASURE_DEMON)
+        
