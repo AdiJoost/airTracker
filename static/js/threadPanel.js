@@ -8,7 +8,6 @@ let setPanel = function(result, threadKey){
 }
 
 let setPanelTrue = function(threadKey){
-    console.log($("#".concat(threadKey)).children())
     $("#".concat(threadKey)).children().children(".alert")
     .removeClass(["alert-warning", "alert-danger"])
     .addClass("alert-success")
@@ -32,6 +31,23 @@ let stopDeamon = function(threadKey){
         url: baseUrl.concat("/nerveCenter"),
         data: myOrder,
         success: function(result){
+            alert(result)
+            setPanel(result, threadKey);
+        },
+        dataType: "json",
+        contetType: "application/json"
+    })
+}
+
+let startDeamon = function(threadKey){
+    let baseUrl = window.location.origin;
+    myOrder = {"thread_name": threadKey};
+    console.log(myOrder)
+    $.ajax({
+        type:"POST",
+        url: baseUrl.concat("/thread"),
+        data: myOrder,
+        success: function(result){
             setPanel(result, threadKey);
         },
         dataType: "json",
@@ -40,7 +56,16 @@ let stopDeamon = function(threadKey){
 }
 
 let setPanelFalse = function(threadKey){
-    alert("Is not online");
+    $("#".concat(threadKey)).children().children(".alert")
+    .removeClass(["alert-warning", "alert-success"])
+    .addClass("alert-danger")
+    .text("Offline");
+
+    $("#".concat(threadKey)).children().children(".btn")
+    .removeClass("btn-outline-danger")
+    .addClass("btn-outline-success")
+    .text("Start Deamon")
+    .attr("onclick", 'startDeamon("'.concat(threadKey).concat('")'));
 }
 
 
