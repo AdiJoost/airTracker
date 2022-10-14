@@ -6,7 +6,8 @@ from global_controller.global_controller import Global_Controller
 from flask import make_response, jsonify
 
 def set_global_controller(gc: Global_Controller):
-    gc.update(Global_Controller.SHUTDOWN, False)
+    for name in gc.thread_names:
+        gc.update(name, gc.SHUTDOWN, False)
 
 def create_response (body, status):
     response = make_response(jsonify(body), status)

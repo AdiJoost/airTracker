@@ -25,19 +25,26 @@ class Measurment_Thread():
         self.deamon_thread.join(20)
 
     def run (self):
-        self.gc.update(Global_Controller.MEASURE_DEMON, True)
+        self.gc.update(Global_Controller.MEASURE_DEMON,
+                        Global_Controller.IS_ONLINE,
+                        True)
         try:
             is_stop = False
-            intervall = self.gc.get_arg(Global_Controller.MEASURMENT_INTERVALL)
-            update_intervall = self.gc.get_arg(Global_Controller.MEASURMENT_UPDATE)
+            intervall = self.gc.get_arg(Global_Controller.MEASURE_DEMON,
+                                        Global_Controller.MEASURMENT_INTERVALL)
+            update_intervall = self.gc.get_arg(Global_Controller.MEASURE_DEMON,
+                                        Global_Controller.MEASURMENT_UPDATE)
             counter = 0
-
             while not is_stop:
-                self.gc.update(Global_Controller.MEASURE_DEMON, True)
+                self.gc.update(Global_Controller.MEASURE_DEMON,
+                                Global_Controller.IS_ONLINE,
+                                True)
                 controls = self.gc.get()
-                intervall = controls[Global_Controller.MEASURMENT_INTERVALL]
-                update_intervall = controls[Global_Controller.MEASURMENT_UPDATE]
-                if (controls[Global_Controller.SHUTDOWN] == True):
+                intervall = controls[Global_Controller.MEASURE_DEMON]\
+                                    [Global_Controller.MEASURMENT_INTERVALL]
+                update_intervall = controls[Global_Controller.MEASURE_DEMON]\
+                                    [Global_Controller.MEASURMENT_UPDATE]
+                if (controls[Global_Controller.MEASURE_DEMON][Global_Controller.SHUTDOWN] == True):
                     is_stop = True
                 
                 readout = self.GPIO_Handler.read_co2()
@@ -58,7 +65,8 @@ class Measurment_Thread():
                 time.sleep(intervall)
         
             Logger.log(__name__, f"Deamon is dead")
-            self.gc.update(Global_Controller.MEASURE_DEMON, False)
+            self.gc.update(Global_Controller.MEASURE_DEMON,
+                            Global_Controller.IS_ONLINE, False)
 
         except Exception as e:
             Logger.log(__name__, e.args, "error_log.txt")

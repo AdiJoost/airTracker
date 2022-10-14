@@ -7,6 +7,7 @@ import os
 from filelock import FileLock
 from log.logger import Logger
 import json
+import time
 
 class Global_Controller():
     SHUTDOWN = "shutdown"
@@ -20,6 +21,12 @@ class Global_Controller():
     CO2 = "co2"
     PRESSURE = "pressure"
     MEASURE_DEMON = "measure_deamon"
+    MAIL_DEAMON = "mail_deamon"
+    IS_ONLINE = "is_online"
+    thread_names = (
+        MEASURE_DEMON,
+        MAIL_DEAMON
+    )
 
     def __init__(self):
         self.lock_path = self.get_file_path("controls.json.lock")
@@ -45,6 +52,17 @@ class Global_Controller():
             return data[key]
         else:
             Logger.log(__name__, f"Asked global Controller for non existing key({key})")
+    
+    def get_arg(self, thread_key, key):
+        with self.file_lock:
+            with open(self.file_path, "r") as file:
+                data = json.loads(file.read())
+        if thread_key in data.keys():
+            if key in data[thread_key].keys():
+                return data[thread_key][key]
+        else:
+            Logger.log(__name__, f"Asked global Controller for non existing key([{thread_key}][{key}])")
+
 
     def append(self, data):
         with self.file_lock:
@@ -59,6 +77,14 @@ class Global_Controller():
             old_data[key] = data
             self.overwrite(old_data)
         return {key: old_data[key]}
+    
+    def update(self, thread_key: str, key: str, data=""):
+        with self.file_lock:
+            with open(self.file_path, "r") as file:
+                old_data = json.loads(file.read())
+            old_data[thread_key][key] = data
+            self.overwrite(old_data)
+        return {key: old_data[thread_key][key]}
 
     
     def overwrite(self, data=""):
@@ -66,3 +92,11 @@ class Global_Controller():
             with open(self.file_path, "w") as file:
                 success = file.write(json.dumps(data))
         return success
+    
+    def is_online(self, meassure_name):
+        is_online = self.get_arg(meassure_name, self.IS_ONLINE)
+        if not is_online:
+            return False
+        self.update(meassure_name, self.IS_ONLINE, False)
+        time.sleep(int(self.get_arg(meassure_name, Global_Controller.MEASURMENT_INTERVALL)) + 2)
+        return self.get_arg(meassure_name, self.IS_ONLINE)
