@@ -47,13 +47,13 @@ class Nerve_Center(Resource):
     @classmethod
     def get_post_parser(cls):
         parser = reqparse.RequestParser()
-        parser.add_argument(Global_Controller.BLINKING_SHOW,
-                            type=bool)
+        parser.add_argument(Global_Controller.MEASURE_DEMON,
+                            type=dict)
         return parser
 
     @classmethod
     def get_put_parser(cls):
         parser = reqparse.RequestParser()
         parser.add_argument(Global_Controller.MEASURE_DEMON,
-                        type = dict)
+                            type=dict)
         return parser

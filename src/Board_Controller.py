@@ -30,8 +30,10 @@ class Board_Controller():
                             " the class itself")
         else:
             Board_Controller.__instance = self
+            self.gc = Global_Controller()
             self.GPIO_Handler = GPIO_Handler()
             self.measurment_thread = Measurment_Thread(self.GPIO_Handler)
+
             
 
             
@@ -49,5 +51,10 @@ class Board_Controller():
     def start_thread(self, thread_name: str):
         #this is a bad use, but restruction of thread-handling
         #is more timeconsuming than using an if-elif
+        
+        
         if (thread_name == Global_Controller.MEASURE_DEMON):
+            Logger.log(__name__, "start a Measure deamon")
+            self.gc.update(Global_Controller.MEASURE_DEMON,
+                            Global_Controller.SHUTDOWN, False)
             self.start_messurments()

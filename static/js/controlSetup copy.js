@@ -34,20 +34,17 @@ let gotPost = function(result){
 
 jQuery.fn.controls = function(){
     let baseUrl = window.location.origin;
-    let thread_list = [["Mess-Sensor","measure_deamon"]]
 
     let title = $.parseHTML("<h2>Controls</h2>");
     $(title).addClass("display-5 text-center my-4");
     $(this).append(title);
 
     
+    let container = $.parseHTML("<div class='container'></div>");
         let row = $.parseHTML('<div class="row"></div>');  
-            for (const threadName of thread_list){
-                let panel = $.parseHTML('<div class="col-md-4 mt-3"></div>');
-                $(panel).threadPanel(threadName[0], threadName[1]);
-                $(row).append(panel);
-            }
-    $(this).append(row);
+            $(row).append(get_control("Shutdown", "btn-danger"));
+        $(container).append(row);
+    $(this).append(container);
     
     
     return this;
