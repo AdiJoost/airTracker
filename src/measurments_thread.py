@@ -2,7 +2,6 @@ from log.logger import Logger
 from datetime import datetime
 import time
 import threading
-from queue import Queue
 from global_controller.global_controller import Global_Controller
 
 class Measurment_Thread():
@@ -73,9 +72,9 @@ class Measurment_Thread():
         
     
     def call_nerves(self, data):
-        self.gc.update(Global_Controller.TEMPERATURE, data[0])
-        self.gc.update(Global_Controller.HUMIDITY, data[1])
-        self.gc.update(Global_Controller.PRESSURE, data[2])
-        self.gc.update(Global_Controller.CO2, data[3])
+        self.gc.update_arg(Global_Controller.TEMPERATURE, data=data[0])
+        self.gc.update_arg(Global_Controller.HUMIDITY, data=data[1])
+        self.gc.update_arg(Global_Controller.PRESSURE, data=data[2])
+        self.gc.update_arg(Global_Controller.CO2, data=data[3])
 
     

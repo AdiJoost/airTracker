@@ -35,7 +35,7 @@ class Board_Controller():
             
 
             
-    def start_messurments(self, intervall):
+    def start_messurments(self):
         try:
             self.measurment_thread.start()
         except Exception as e:
@@ -46,12 +46,8 @@ class Board_Controller():
         self.measurment_thread.stop()
         pass
 
-    def is_messurment_online(self):
-        gc = Global_Controller()
-        is_online = gc.get_arg(Global_Controller.MEASURE_DEMON)
-        if not is_online:
-            return False
-        gc.update(Global_Controller.MEASURE_DEMON, False)
-        time.sleep(int(gc.get_arg(Global_Controller.MEASURMENT_INTERVALL)) + 1)
-        return gc.get_arg(Global_Controller.MEASURE_DEMON)
-        
+    def start_thread(self, thread_name: str):
+        #this is a bad use, but restruction of thread-handling
+        #is more timeconsuming than using an if-elif
+        if (thread_name == Global_Controller.MEASURE_DEMON):
+            self.start_messurments()

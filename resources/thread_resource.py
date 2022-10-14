@@ -7,6 +7,7 @@ from flask_restful import Resource, reqparse
 from sqlalchemy import null
 from src.my_utils import create_response
 from global_controller.global_controller import Global_Controller
+from src.Board_Controller import Board_Controller
 
 class Thread_resource(Resource):
     def get(self):
@@ -20,17 +21,23 @@ class Thread_resource(Resource):
         return create_response({data["thread_name"]: is_online}, 200)
 
     def post (self):
-        parser = self.get_post_parser()
+        parser = self.get_get_parser()
         data = parser.parse_args()
         gc = Global_Controller()
-        return_value = {}
-        for key in data:
-            if (data[key] is not None):
-                transform = gc.update(key, data[key])
-                return_value.update(transform)
-        return_value["message"] = "Components updated"
-        return_value["data"] = data
-        create_response(return_value, 200)
+        if not(data["thread_name"] in gc.thread_names):
+            return create_response({"Message": "Threadname not found"}, 404)
+        is_online = gc.is_online()
+        if is_online:
+            return create_response({"message":
+                                    "Thread already online"}, 200)
+        Board_Controller.get_instance.start_thread(data["thread_name"])
+        is_online = gc.is_online()
+        if is_online:
+            return create_response({"message":
+                                    "Thread stared"}, 200)
+        return create_response({"message":
+                                    "Internal Error, Ask Adi"}, 500)
+        
 
         
     

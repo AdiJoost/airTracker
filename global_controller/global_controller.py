@@ -70,7 +70,7 @@ class Global_Controller():
                 success = file.write(json.dumps(data))
         return success
     
-    def update(self, key: str, data=""):
+    def update_arg(self, key: str, data=""):
         with self.file_lock:
             with open(self.file_path, "r") as file:
                 old_data = json.loads(file.read())
@@ -94,9 +94,6 @@ class Global_Controller():
         return success
     
     def is_online(self, meassure_name):
-        is_online = self.get_arg(meassure_name, self.IS_ONLINE)
-        if not is_online:
-            return False
         self.update(meassure_name, self.IS_ONLINE, False)
         time.sleep(int(self.get_arg(meassure_name, Global_Controller.MEASURMENT_INTERVALL)) + 2)
         return self.get_arg(meassure_name, self.IS_ONLINE)
