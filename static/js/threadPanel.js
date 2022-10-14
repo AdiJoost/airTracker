@@ -23,9 +23,9 @@ let setPanelTrue = function(threadKey){
 
 let stopDeamon = function(threadKey){
     let baseUrl = window.location.origin;
-    myOrder = JSON.stringify({"measure_deamon": 1,
+    myOrder = JSON.stringify({"measure_deamon": {
                 "shutdown": true
-    });
+    }});
     console.log(myOrder)
     $.ajax({
         type:"PUT",
