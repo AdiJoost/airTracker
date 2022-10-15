@@ -39,10 +39,8 @@ def read_co2_sensor():
         time.sleep(1)
     return -1
 
-def blinkMe():
-    GPIO.output(20, False)
-    GPIO.output(21, False)
-    GPIO.output(16, False)
+def set_led(pin: int, on: bool):
+    GPIO.output(pin, on)
 
 def gpio_setup():
     GPIO.setmode(GPIO.BCM)

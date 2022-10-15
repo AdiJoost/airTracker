@@ -6,7 +6,7 @@ only used in one script.
 
 #import adafruit_dht
 #import board
-#from src.gpio_calls import read_co2_sensor, gpio_setup
+#from src.gpio_calls import read_co2_sensor, gpio_setup, set_led
 from random import randint
 from log.logger import Logger
 
@@ -25,6 +25,10 @@ class GPIO_Handler():
     def setup(self):
 #        gpio_setup()
 
+        return 1
+    
+    def tell_gpio(self, pin: int, on: bool):
+#        set_led(pin, on)
         return 1
 
     def get_humidity(self):

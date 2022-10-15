@@ -22,10 +22,12 @@ class Global_Controller():
     PRESSURE = "pressure"
     MEASURE_DEMON = "measure_deamon"
     MAIL_DEAMON = "mail_deamon"
+    LED_DEAMON = "led_deamon"
     IS_ONLINE = "is_online"
     thread_names = (
         MEASURE_DEMON,
-        MAIL_DEAMON
+        MAIL_DEAMON,
+        LED_DEAMON
     )
 
     def __init__(self):

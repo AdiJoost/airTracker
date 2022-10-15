@@ -16,7 +16,6 @@ class Nerve_Center(Resource):
         return create_response(data, 200)
 
     def post (self):
-        Logger.log(__name__, "Post got called", "error_log.txt")
         parser = self.get_post_parser()
         data = parser.parse_args()
         gc = Global_Controller()
