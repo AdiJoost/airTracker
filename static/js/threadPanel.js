@@ -22,6 +22,14 @@ let setPanelTrue = function(threadKey){
 
 let stopDeamon = function(threadKey){
     let baseUrl = window.location.origin;
+    fetch(baseUrl.concat("/thread/").concat(threadKey),{
+        method:"PUT",
+        headers: {
+            "Content-Type": "application/json"
+        }
+    }).then(response => {return response.json()})
+    .then(body => setPanelFalse(threadKey))
+    /*
     myOrder = JSON.stringify({"measure_deamon": {
                 "shutdown": true
     }});
@@ -33,11 +41,16 @@ let stopDeamon = function(threadKey){
             setPanelFalse(threadKey)
         }
     }
-    Http.send(myOrder);
+    Http.send(myOrder);*/
 }
 
 let startDeamon = function(threadKey){
     let baseUrl = window.location.origin;
+    fetch(baseUrl.concat("/thread/").concat(threadKey),{
+        method:"POST"
+    }).then(response => {return response.json()})
+    .then(body => setPanelTrue(threadKey))
+    /*
     myOrder = {"thread_name": threadKey};
     $.ajax({
         type:"POST",
@@ -48,7 +61,7 @@ let startDeamon = function(threadKey){
         },
         dataType: "json",
         contetType: "application/json"
-    })
+    })*/
 }
 
 let setPanelFalse = function(threadKey){
@@ -68,6 +81,15 @@ let setPanelFalse = function(threadKey){
 
 jQuery.fn.setStatus = function(threadKey){
     let baseUrl = window.location.origin;
+    fetch(baseUrl.concat("/thread/").concat(threadKey),{
+        method:"GET",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        
+    }).then(response => {return response.json()})
+    .then(body => setPanel(body, threadKey))
+    /*
     myData = {"thread_name": threadKey};
     $.ajax({
         type:"GET",
@@ -77,8 +99,8 @@ jQuery.fn.setStatus = function(threadKey){
             setPanel(result, threadKey);
         },
         dataType: "json",
-        contetType: "application/json; charset=utf-8"
-    })
+        contetType: "application/json"
+    })*/
     return this;
 }
 

@@ -35,7 +35,7 @@ def controls():
 
 
 api.add_resource(Nerve_Center, "/nerveCenter")
-api.add_resource(Thread_resource, "/thread")
+api.add_resource(Thread_resource, "/thread/<string:thread_name>")
 
 if __name__ == "__main__":
     Logger.log(__name__, "\n*****************************\n"\
