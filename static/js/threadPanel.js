@@ -25,30 +25,26 @@ let stopDeamon = function(threadKey){
     myOrder = JSON.stringify({"measure_deamon": {
                 "shutdown": true
     }});
-    console.log(myOrder)
-    $.ajax({
-        type:"PUT",
-        url: baseUrl.concat("/nerveCenter"),
-        data: myOrder,
-        success: function(result){
-            alert(result)
-            setPanel(result, threadKey);
-        },
-        dataType: "json",
-        contetType: "application/json"
-    })
+    const Http = new XMLHttpRequest();
+    Http.open("PUT", baseUrl.concat("/nerveCenter"), true);
+    Http.setRequestHeader("Content-Type", "application/json")
+    Http.onreadystatechange = () =>{
+        if(Http.readyState === XMLHttpRequest.DONE && Http.status === 200){
+            setPanelFalse(threadKey)
+        }
+    }
+    Http.send(myOrder);
 }
 
 let startDeamon = function(threadKey){
     let baseUrl = window.location.origin;
     myOrder = {"thread_name": threadKey};
-    console.log(myOrder)
     $.ajax({
         type:"POST",
         url: baseUrl.concat("/thread"),
         data: myOrder,
         success: function(result){
-            setPanel(result, threadKey);
+            setPanelTrue(threadKey);
         },
         dataType: "json",
         contetType: "application/json"
@@ -83,6 +79,7 @@ jQuery.fn.setStatus = function(threadKey){
         dataType: "json",
         contetType: "application/json; charset=utf-8"
     })
+    return this;
 }
 
 
