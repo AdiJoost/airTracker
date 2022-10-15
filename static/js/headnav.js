@@ -29,6 +29,7 @@ jQuery.fn.navigationBar = function(){
             $(row).append(get_navbutton("About", "btn-info", baseUrl.concat("/")));
             $(row).append(get_navbutton("Spreadsheets", "btn-warning", baseUrl.concat("/")));
         $(container).append(row);
+        $(container).append($.parseHTML("<hr>"));
     $(this).append(container);
     
     
