@@ -39,7 +39,7 @@ class LED_Thread():
                 if (controls[Global_Controller.LED_DEAMON][Global_Controller.SHUTDOWN] == True):
                     is_stop = True
                 co2 = controls[Global_Controller.CO2]
-                Logger.log(__name__, "Going to blink")
+                
                 if (co2 < 600):
                     self.GPIO_Handler.tell_gpio(21, True)
                     time.sleep(intervall * 1)
@@ -72,6 +72,7 @@ class LED_Thread():
                 
         
             Logger.log(__name__, f"LED-Deamon is dead")
+            self.GPIO_Handler.tell_gpio(21, False)
             self.gc.update(Global_Controller.LED_DEAMON,
                             Global_Controller.IS_ONLINE, False)
 
