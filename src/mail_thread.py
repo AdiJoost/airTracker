@@ -1,4 +1,4 @@
-from tomlkit import datetime
+from datetime import datetime, timedelta
 from log.logger import Logger
 import time
 import threading
@@ -74,6 +74,8 @@ class Mail_Thread():
             Logger.log(__name__, f"Mail sent to: {mail_list[user]}")
 
     def get_path(self):
+        yd = datetime.today() - timedelta(1)
+
         my_path = os.getcwd().split("airTracker", 1)[0]
-        my_path = os.path.join(my_path, "airTracker", "log", f"2022-10-7.csv")
+        my_path = os.path.join(my_path, "airTracker", "log", f"{yd.year}-{yd.month}-{yd.day}.csv")
         return my_path
