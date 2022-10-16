@@ -8,7 +8,10 @@ import threading
 import json
 
 def main():
-    
+
+    now = time.localtime()
+    print(now.tm_hour)
+    """
     gh = GPIO_Handler()
     while True:
         
@@ -30,7 +33,7 @@ def ask_controller(number, timeo=2):
     print(type(data))
 
     
-    """
+    
     gpio_handler = GPIO_Handler()
     while True:
         humidity = gpio_handler.get_humidity()

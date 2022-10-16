@@ -9,6 +9,7 @@ from log.logger import Logger
 from src.gpio_handler import GPIO_Handler
 from src.measurments_thread import Measurment_Thread
 from src.led_thread import LED_Thread
+from src.mail_thread import Mail_Thread
 from global_controller.global_controller import Global_Controller
 
 
@@ -35,6 +36,7 @@ class Board_Controller():
             self.GPIO_Handler = GPIO_Handler()
             self.measurment_thread = Measurment_Thread(self.GPIO_Handler)
             self.led_thread = LED_Thread(self.GPIO_Handler)
+            self.mail_thread = Mail_Thread(self.GPIO_Handler)
 
             
 
@@ -48,6 +50,12 @@ class Board_Controller():
     def start_led(self):
         try:
             self.led_thread.start()
+        except Exception as e:
+            Logger.log(__name__, str(e), "error_log.txt")
+    
+    def start_mail(self):
+        try:
+            self.mail_thread.start()
         except Exception as e:
             Logger.log(__name__, str(e), "error_log.txt")
 
@@ -72,3 +80,8 @@ class Board_Controller():
             self.gc.update(Global_Controller.LED_DEAMON,
                             Global_Controller.SHUTDOWN, False)
             self.start_led()
+        if (thread_name == Global_Controller.MAIL_DEAMON):
+            Logger.log(__name__, "start a Mail deamon")
+            self.gc.update(Global_Controller.MAIL_DEAMON,
+                            Global_Controller.SHUTDOWN, False)
+            self.start_mail()

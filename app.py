@@ -48,6 +48,7 @@ if __name__ == "__main__":
     set_global_controller(global_controller)
     board_controller.start_thread(Global_Controller.MEASURE_DEMON)
     board_controller.start_thread(Global_Controller.LED_DEAMON)
+    board_controller.start_thread(Global_Controller.MAIL_DEAMON)
     
     #start app
     app.run(port=5000, host="0.0.0.0", debug=True, threaded=True)

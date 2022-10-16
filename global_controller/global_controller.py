@@ -20,6 +20,7 @@ class Global_Controller():
     TEMPERATURE = "temperature"
     CO2 = "co2"
     PRESSURE = "pressure"
+    MAIL_LIST = "mail_list"
     MEASURE_DEMON = "measure_deamon"
     MAIL_DEAMON = "mail_deamon"
     LED_DEAMON = "led_deamon"
