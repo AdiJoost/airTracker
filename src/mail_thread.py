@@ -44,13 +44,14 @@ class Mail_Thread():
                     is_stop = True
                 
                 now = time.localtime()
-                if(now.tm_hour == 19 and should_send):
+                sendTime = controls[Global_Controller.MAIL_DEAMON][Global_Controller.SEND_TIME]
+                if(now.tm_hour == sendTime and should_send):
                     try:
                         self.send_mail()
                         should_send = False
                     except Exception as e:
                         Logger.log(__name__, str(e), "error_log.txt")
-                if(now.tm_hour == 20):
+                if(now.tm_hour == sendTime + 1):
                     should_send = True
 
                 time.sleep(intervall)
@@ -74,8 +75,13 @@ class Mail_Thread():
             Logger.log(__name__, f"Mail sent to: {mail_list[user]}")
 
     def get_path(self):
-        yd = datetime.today() - timedelta(1)
-
-        my_path = os.getcwd().split("airTracker", 1)[0]
-        my_path = os.path.join(my_path, "airTracker", "log", f"{yd.year}-{yd.month}-{yd.day}.csv")
-        return my_path
+        try:
+            yd = datetime.today() - timedelta(1)
+            my_path = os.getcwd().split("airTracker", 1)[0]
+            my_path = os.path.join(my_path, "airTracker", "log", f"{yd.year}-{yd.month}-{yd.day}.csv")
+            return my_path
+        except Exception as e:
+            Logger.log(__name__, e.args, "error_log.txt")
+            my_path = os.getcwd().split("airTracker", 1)[0]
+            my_path = os.path.join(my_path, "airTracker", "log", f"notFound.txt")
+            return my_path
