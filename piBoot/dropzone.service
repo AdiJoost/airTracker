@@ -1,0 +1,10 @@
+[Unit]
+Description=Starting airTracker
+After=multi-user.target
+
+[Service]
+Type=simple
+ExecStart=/bin/sh /home/pi/dropzone.sh
+
+[Install]
+WantedBy=multi-user.target
