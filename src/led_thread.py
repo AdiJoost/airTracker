@@ -1,4 +1,4 @@
-from gpio_handler import GPIO_Handler
+from src.gpio_handler import GPIO_Handler
 from log.logger import Logger
 import time
 import threading
