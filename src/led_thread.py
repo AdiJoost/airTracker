@@ -1,3 +1,4 @@
+from gpio_handler import GPIO_Handler
 from log.logger import Logger
 import time
 import threading
@@ -45,38 +46,31 @@ class LED_Thread():
                 t4 = controls[Global_Controller.LED_DEAMON][Global_Controller.T4]
                 
                 if (co2 < t1):
-                    self.GPIO_Handler.tell_gpio(21, True)
+                    self.GPIO_Handler.tell_gpio(GPIO_Handler.GREEN)
                     time.sleep(intervall * 1)
                 elif (co2 < t2):
-                    self.GPIO_Handler.tell_gpio(21, True)
-                    time.sleep(intervall * 0.95)
-                    self.GPIO_Handler.tell_gpio(21, False)
-                    time.sleep(intervall * 0.05)
+                    self.GPIO_Handler.tell_gpio(GPIO_Handler.BLUE)
+                    time.sleep(intervall * 1)
+                    
                 elif (co2 < t3):
-                    for _ in range(2):
-                        self.GPIO_Handler.tell_gpio(21, True)
-                        time.sleep(intervall * 0.33)
-                        self.GPIO_Handler.tell_gpio(21, False)
-                        time.sleep(intervall * 0.33)
+                    self.GPIO_Handler.tell_gpio(GPIO_Handler.YELLOW)
+                    time.sleep(intervall * 1)
+                        
                 elif (co2 < t4):
-                    for _ in range(5):
-                        self.GPIO_Handler.tell_gpio(21, True)
-                        time.sleep(intervall * 0.1)
-                        self.GPIO_Handler.tell_gpio(21, False)
-                        time.sleep(intervall * 0.1)
+                    self.GPIO_Handler.tell_gpio(GPIO_Handler.RED)
+                    time.sleep(intervall * 1)
                 else:
-                    for _ in range(10):
-                        self.GPIO_Handler.tell_gpio(21, True)
-                        time.sleep(intervall * 0.05)
-                        self.GPIO_Handler.tell_gpio(21, False)
-                        time.sleep(intervall * 0.05)
+                    self.GPIO_Handler.tell_gpio(GPIO_Handler.RED)
+                    time.sleep(intervall * 0.5)
+                    self.GPIO_Handler.tell_gpio(GPIO_Handler.TURN_OFF)
+                    time.sleep(intervall * 0.5)
                 
 
                 
                 
         
             Logger.log(__name__, f"LED-Deamon is dead")
-            self.GPIO_Handler.tell_gpio(21, False)
+            self.GPIO_Handler.tell_gpio(GPIO_Handler.TURN_OFF)
             self.gc.update(Global_Controller.LED_DEAMON,
                             Global_Controller.IS_ONLINE, False)
 

@@ -9,8 +9,21 @@ import json
 
 def main():
 
-    now = time.localtime()
-    print(now.tm_hour)
+    gh = GPIO_Handler
+    while True:
+        gh.tell_gpio(gh.BLUE)
+        time.sleep(1)
+        gh.tell_gpio(gh.RED)
+        time.sleep(1)
+        gh.tell_gpio(gh.YELLOW)
+        time.sleep(1)
+        gh.tell_gpio(gh.GREEN)
+        time.sleep(1)
+        gh.tell_gpio(gh.PURPLE)
+        time.sleep(1)
+        gh.tell_gpio(gh.TURN_OFF)
+        time.sleep(1)
+
     """
     gh = GPIO_Handler()
     while True:

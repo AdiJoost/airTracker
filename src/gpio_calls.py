@@ -42,6 +42,7 @@ def read_co2_sensor():
 def set_led(pin: int, on: bool):
     GPIO.output(pin, on)
 
+
 def gpio_setup():
     GPIO.setmode(GPIO.BCM)
     GPIO.setup(20, GPIO.OUT)
