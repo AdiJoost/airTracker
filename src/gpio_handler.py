@@ -53,8 +53,8 @@ class GPIO_Handler():
             pass
         elif color == self.YELLOW:
 #            set_led(self.redPin, True)
-#            set_led(self.bluePin, True)
-#            set_led(self.greenPin, False)
+#            set_led(self.bluePin, False)
+#            set_led(self.greenPin, True)
             pass
         elif color == self.PURPLE:
 #            set_led(self.redPin, True)
