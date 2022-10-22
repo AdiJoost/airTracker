@@ -20,8 +20,8 @@ class GPIO_Handler():
     TURN_OFF ="turn_off"
     def __init__(self):
         #self.dht_sensor = adafruit_dht.DHT11(board.D21)
-        self.redPin = 21
-        self.bluePin = 20
+        self.redPin = 20
+        self.bluePin = 21
         self.greenPin = 26
 
         self.setup()
