@@ -9,7 +9,7 @@ import json
 
 def main():
 
-    gh = GPIO_Handler
+    gh = GPIO_Handler()
     while True:
         gh.tell_gpio(gh.BLUE)
         time.sleep(1)
