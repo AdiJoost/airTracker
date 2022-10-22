@@ -47,5 +47,5 @@ def gpio_setup():
     GPIO.setmode(GPIO.BCM)
     GPIO.setup(20, GPIO.OUT)
     GPIO.setup(21, GPIO.OUT)
-    GPIO.setup(16, GPIO.OUT)
+    GPIO.setup(26, GPIO.OUT)
     
