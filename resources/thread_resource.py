@@ -5,7 +5,7 @@ nerve_center is a Ressource, that is talking to the global_controller of the app
 
 from flask_restful import Resource, reqparse
 from sqlalchemy import null
-from src.my_utils import create_response
+from src.my_utils import create_response, deamon_hunt
 from global_controller.global_controller import Global_Controller
 from src.Board_Controller import Board_Controller
 
@@ -38,7 +38,11 @@ class Thread_resource(Resource):
         gc.update(thread_name, Global_Controller.SHUTDOWN, True)
         return create_response({"message": "Thread dead"}, 200)
 
-        
+    def delete(self, thread_name):
+        deamon_hunt()
+        return create_response({
+            "Message": "All Deamans are hauted"
+        }, 201)
     
     @classmethod
     def get_get_parser(cls):

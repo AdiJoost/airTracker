@@ -6,25 +6,24 @@ from src.gpio_handler import GPIO_Handler
 import datetime
 import threading
 import json
+from MailBot.MailBot import *
+import os
 
 def main():
+    path = get_path()
+    sendMail(text= "hello",subject="Test", reciver="adi.joost@gmail.com", path=path)
 
-    gh = GPIO_Handler()
-    while True:
-        gh.tell_gpio(gh.BLUE)
-        time.sleep(1)
-        gh.tell_gpio(gh.RED)
-        time.sleep(1)
-        gh.tell_gpio(gh.YELLOW)
-        time.sleep(1)
-        gh.tell_gpio(gh.GREEN)
-        time.sleep(1)
-        gh.tell_gpio(gh.PURPLE)
-        time.sleep(1)
-        gh.tell_gpio(gh.TURN_OFF)
-        time.sleep(1)
-
-    """
+def get_path():
+    try:
+        my_path = os.getcwd().split("airTracker", 1)[0]
+        my_path = os.path.join(my_path, "airTracker", "log", f"main_log.txt")
+        return my_path
+    except Exception as e:
+        Logger.log(__name__, e.args, "error_log.txt")
+        my_path = os.getcwd().split("airTracker", 1)[0]
+        my_path = os.path.join(my_path, "airTracker", "log", f"notFound.txt")
+    
+"""
     gh = GPIO_Handler()
     while True:
         

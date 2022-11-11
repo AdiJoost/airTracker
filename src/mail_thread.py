@@ -58,7 +58,6 @@ class Mail_Thread():
                 
         
             Logger.log(__name__, f"Mail-Deamon is dead")
-            self.GPIO_Handler.tell_gpio(21, False)
             self.gc.update(Global_Controller.MAIL_DEAMON,
                             Global_Controller.IS_ONLINE, False)
 
@@ -79,7 +78,9 @@ class Mail_Thread():
             yd = datetime.today() - timedelta(1)
             my_path = os.getcwd().split("airTracker", 1)[0]
             my_path = os.path.join(my_path, "airTracker", "log", f"{yd.year}-{yd.month}-{yd.day}.csv")
-            return my_path
+            if os.path.exists(my_path):
+                return my_path
+            raise RuntimeError
         except Exception as e:
             Logger.log(__name__, e.args, "error_log.txt")
             my_path = os.getcwd().split("airTracker", 1)[0]

@@ -1,0 +1,4 @@
+E-Mail-Deamon decode error
+Gracefull shutdown
+I/O -Output
+Timed Restart

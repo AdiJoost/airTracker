@@ -13,3 +13,9 @@ def create_response (body, status):
     response = make_response(jsonify(body), status)
     response.headers.add('Access-Control-Allow-Origin', 'http://127.0.0.1:5000')
     return response
+
+def deamon_hunt():
+    """Gracefully shuts all deamons down"""
+    gc = Global_Controller()
+    for thread_name in Global_Controller.thread_names:
+        gc.update(thread_name, gc.SHUTDOWN, True)
