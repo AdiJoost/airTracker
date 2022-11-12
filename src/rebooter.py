@@ -16,7 +16,7 @@ class Rebooter():
             self.deamon_thread = threading.Thread(target=self.run,
                                                   args=())
             self.deamon_thread.start()
-            Logger.log(__name__, "Measurment-Deamon is running")
+            Logger.log(__name__, "Rebooter is running")
         except Exception as e:
             Logger.log(__name__, str(e), "error_log.txt")
         
@@ -52,12 +52,14 @@ class Rebooter():
                 counter += 1
                 if (counter == update_intervall):
                     now = datetime.now()
+                    Logger.log(__name__, "Check Reboot")
                     if now.hour in controls[Global_Controller.REBOOTER]\
                         [Global_Controller.REBOOT_TIME]:
+                        Logger.log(__name__, "Rebooting...")
                         reboot()
                 time.sleep(intervall)
         
-            Logger.log(__name__, f"Measure-daemon is dead")
+            Logger.log(__name__, f"Rebooter is dead")
             self.gc.update(Global_Controller.MEASURE_DEMON,
                             Global_Controller.IS_ONLINE, False)
 

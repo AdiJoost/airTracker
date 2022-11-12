@@ -3,7 +3,7 @@ from log.logger import Logger
 import time
 from global_controller.global_controller import Global_Controller
 from src.gpio_handler import GPIO_Handler
-import datetime
+from datetime import datetime
 import threading
 import json
 from MailBot.MailBot import *
@@ -11,7 +11,9 @@ import os
 from src.my_utils import reboot
 
 def main():
-    reboot()
+    now = datetime.now()
+    li = [11,12,13,14,15]
+    print(now.hour in li)
     
 
 def get_path():
