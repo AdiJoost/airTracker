@@ -42,7 +42,11 @@ class Nerve_Center(Resource):
         create_response(return_value, 200)
     
     def delete(self):
-        reboot()
+        val = reboot()
+        return create_response({
+            "message": "Reboot scheduled",
+            "value": val
+        }, 201)
 
         
     

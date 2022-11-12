@@ -27,4 +27,4 @@ def reboot():
     deamon_hunt()
     sleep(5)
     Logger.log(__name__, "Reboot")
-    os.system("sudo shutdown -r")
+    return os.system("sudo shutdown -r")
