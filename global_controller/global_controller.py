@@ -24,16 +24,19 @@ class Global_Controller():
     T2 = "t2"
     T3 = "t3"
     T4 = "t4"
+    REBOOT_TIME = "reboot_time"
     MAIL_LIST = "mail_list"
     SEND_TIME = "send_time"
     MEASURE_DEMON = "measure_deamon"
     MAIL_DEAMON = "mail_deamon"
     LED_DEAMON = "led_deamon"
     IS_ONLINE = "is_online"
+    REBOOTER = "rebooter"
     thread_names = (
         MEASURE_DEMON,
         MAIL_DEAMON,
-        LED_DEAMON
+        LED_DEAMON,
+        REBOOTER
     )
 
     def __init__(self):

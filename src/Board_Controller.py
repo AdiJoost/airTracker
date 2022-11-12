@@ -10,6 +10,7 @@ from src.gpio_handler import GPIO_Handler
 from src.measurments_thread import Measurment_Thread
 from src.led_thread import LED_Thread
 from src.mail_thread import Mail_Thread
+from src.rebooter import Rebooter
 from global_controller.global_controller import Global_Controller
 
 
@@ -37,10 +38,16 @@ class Board_Controller():
             self.measurment_thread = Measurment_Thread(self.GPIO_Handler)
             self.led_thread = LED_Thread(self.GPIO_Handler)
             self.mail_thread = Mail_Thread(self.GPIO_Handler)
+            self.rebooter = Rebooter()
 
             
 
-            
+    def start_rebooter(self):
+        try:
+            self.rebooter.start()
+        except Exception as e:
+            Logger.log(__name__, str(e), "error_log.txt")
+
     def start_messurments(self):
         try:
             self.measurment_thread.start()
@@ -67,8 +74,12 @@ class Board_Controller():
     def start_thread(self, thread_name: str):
         #this is a bad use, but restruction of thread-handling
         #is more timeconsuming than using an if-elif
-        
-        
+        if (thread_name == Global_Controller.REBOOTER):
+            Logger.log(__name__, "start Rebooter")
+            self.gc.update(Global_Controller.REBOOTER,
+                            Global_Controller.SHUTDOWN, False)
+            self.start_rebooter()
+
         if (thread_name == Global_Controller.MEASURE_DEMON):
             Logger.log(__name__, "start a Measure deamon")
             self.gc.update(Global_Controller.MEASURE_DEMON,

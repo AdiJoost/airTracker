@@ -36,7 +36,8 @@ jQuery.fn.controls = function(){
     let baseUrl = window.location.origin;
     let thread_list = [["Mess-Sensor","measure_deamon"],
                         ["LED-Warnleuchte","led_deamon"],
-                        ["Mail-Service","mail_deamon"]]
+                        ["Mail-Service","mail_deamon"],
+                        ["Rebooter", "rebooter"]]
 
     let title = $.parseHTML("<h2>Controls</h2>");
     $(title).addClass("display-5 text-center my-4");

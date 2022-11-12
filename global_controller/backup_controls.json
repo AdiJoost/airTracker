@@ -27,5 +27,12 @@
       "t2": 1100,
       "t3": 1500,
       "t4": 2000
+    },
+    "rebooter": {
+      "is_online": true,
+      "measurment_intervall": 10,
+      "measurment_update": 350,
+      "shutdown": false,
+      "reboot_time": [6, 20]
     }
   }
