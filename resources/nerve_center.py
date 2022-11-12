@@ -5,7 +5,7 @@ nerve_center is a Ressource, that is talking to the global_controller of the app
 
 from flask_restful import Resource, reqparse
 from sqlalchemy import null
-from src.my_utils import create_response
+from src.my_utils import create_response, reboot
 from global_controller.global_controller import Global_Controller
 from log.logger import Logger
 
@@ -40,6 +40,9 @@ class Nerve_Center(Resource):
         return_value["message"] = "Components updated"
         return_value["data"] = data
         create_response(return_value, 200)
+    
+    def delete(self):
+        reboot()
 
         
     

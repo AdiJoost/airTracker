@@ -8,10 +8,11 @@ import threading
 import json
 from MailBot.MailBot import *
 import os
+from src.my_utils import reboot
 
 def main():
-    path = get_path()
-    sendMail(text= "hello",subject="Test", reciver="adi.joost@gmail.com", path=path)
+    reboot()
+    
 
 def get_path():
     try:
