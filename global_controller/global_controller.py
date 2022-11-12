@@ -39,6 +39,7 @@ class Global_Controller():
     def __init__(self):
         self.lock_path = self.get_file_path("controls.json.lock")
         self.file_path = self.get_file_path("controls.json")
+        self.backup_path = self.get_file_path("backup_controls.json")
         self.file_lock = FileLock(self.lock_path, 3600)
         
     def get_file_path(self, file):
@@ -50,21 +51,31 @@ class Global_Controller():
         with self.file_lock:
             with open(self.file_path, "r") as file:
                 data = file.read()
-        return json.loads(data)
+            try:
+                jdata = json.loads(data)
+            except json.decoder.JSONDecodeError as e:
+                Logger.log(__name__, e.args, "error_log.txt")
+                self.restore()
+                with open(self.backup_path, "r") as file:
+                    data = file.read()
+                jdata = json.loads(data)
+        return jdata
+    
+    def restore(self):
+        with open(self.backup_path, "r") as backup:
+            bData = backup.read()
+        self.overwrite(bData)
+            
 
     def get_arg(self, key):
-        with self.file_lock:
-            with open(self.file_path, "r") as file:
-                data = json.loads(file.read())
+        data = self.get()
         if key in data.keys():
             return data[key]
         else:
             Logger.log(__name__, f"Asked global Controller for non existing key({key})")
     
     def get_arg(self, thread_key, key):
-        with self.file_lock:
-            with open(self.file_path, "r") as file:
-                data = json.loads(file.read())
+        data = self.get()
         if thread_key in data.keys():
             if key in data[thread_key].keys():
                 return data[thread_key][key]
@@ -80,16 +91,14 @@ class Global_Controller():
     
     def update_arg(self, key: str, data=""):
         with self.file_lock:
-            with open(self.file_path, "r") as file:
-                old_data = json.loads(file.read())
+            old_data = self.get()
             old_data[key] = data
             self.overwrite(old_data)
         return {key: old_data[key]}
     
     def update(self, thread_key: str, key: str, data=""):
         with self.file_lock:
-            with open(self.file_path, "r") as file:
-                old_data = json.loads(file.read())
+            old_data = self.get()
             old_data[thread_key][key] = data
             self.overwrite(old_data)
         return {key: old_data[thread_key][key]}
