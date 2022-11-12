@@ -42,6 +42,7 @@ class Nerve_Center(Resource):
         create_response(return_value, 200)
     
     def delete(self):
+        Logger.log(__name__, "Got reboot-command")
         try:
             val = reboot()
         except Exception as e:
