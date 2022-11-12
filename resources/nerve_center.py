@@ -42,7 +42,10 @@ class Nerve_Center(Resource):
         create_response(return_value, 200)
     
     def delete(self):
-        val = reboot()
+        try:
+            val = reboot()
+        except Exception as e:
+            Logger.log(__name__, e.args, "error_log.txt")
         return create_response({
             "message": "Reboot scheduled",
             "value": val
