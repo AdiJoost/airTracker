@@ -65,7 +65,7 @@ class Measurment_Thread():
                     counter = 0
                 time.sleep(intervall)
         
-            Logger.log(__name__, f"Deamon is dead")
+            Logger.log(__name__, f"Measure-daemon is dead")
             self.gc.update(Global_Controller.MEASURE_DEMON,
                             Global_Controller.IS_ONLINE, False)
 
