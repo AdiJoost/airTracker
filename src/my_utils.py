@@ -25,6 +25,11 @@ def deamon_hunt():
 
 def reboot():
     deamon_hunt()
-    sleep(5)
     Logger.log(__name__, "Reboot")
-    return os.system("sudo shutdown -r")
+    try:
+        value =  os.system("sudo shutdown -r")
+    except Exception as e:
+        value = "Exception Error"
+        Logger.log(__name__, e.args, "error_log.txt")
+    finally:
+        return value
