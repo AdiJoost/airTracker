@@ -31,8 +31,8 @@
   "rebooter": {
     "is_online": true,
     "measurment_intervall": 10,
-    "measurment_update": 10,
+    "measurment_update": 350,
     "shutdown": false,
-    "reboot_time": [6, 11, 12, 13, 14, 20]
+    "reboot_time": [6, 20]
   }
 }
