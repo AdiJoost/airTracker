@@ -27,6 +27,7 @@ class Global_Controller():
     REBOOT_TIME = "reboot_time"
     MAIL_LIST = "mail_list"
     SEND_TIME = "send_time"
+    IS_REBOOT = "isReboot"
     MEASURE_DEMON = "measure_deamon"
     MAIL_DEAMON = "mail_deamon"
     LED_DEAMON = "led_deamon"

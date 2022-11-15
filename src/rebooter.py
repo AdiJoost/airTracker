@@ -53,14 +53,22 @@ class Rebooter():
                 if (counter == update_intervall):
                     now = datetime.now()
                     Logger.log(__name__, "Check Reboot")
-                    if now.hour in controls[Global_Controller.REBOOTER]\
-                        [Global_Controller.REBOOT_TIME]:
+                    if (now.hour in controls[Global_Controller.REBOOTER]\
+                        [Global_Controller.REBOOT_TIME]) and\
+                        controls[Global_Controller.REBOOTER][Global_Controller.IS_REBOOT]:
+                        self.gc.update(Global_Controller.REBOOTER,
+                            Global_Controller.IS_REBOOT, False)
                         Logger.log(__name__, "Rebooting...")
                         reboot()
+                    elif((now.hour - 1) in controls[Global_Controller.REBOOTER]\
+                        [Global_Controller.REBOOT_TIME]) and not\
+                        controls[Global_Controller.REBOOTER][Global_Controller.IS_REBOOT]:
+                        self.gc.update(Global_Controller.REBOOTER,
+                            Global_Controller.IS_REBOOT, True)
                 time.sleep(intervall)
         
             Logger.log(__name__, f"Rebooter is dead")
-            self.gc.update(Global_Controller.MEASURE_DEMON,
+            self.gc.update(Global_Controller.REBOOTER,
                             Global_Controller.IS_ONLINE, False)
 
         except Exception as e:

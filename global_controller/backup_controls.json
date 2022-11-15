@@ -30,10 +30,10 @@
     },
     "rebooter": {
       "is_online": true,
-      "measurment_intervall": 10,
-      "measurment_update": 350,
+      "measurment_intervall": 5,
+      "measurment_update": 10,
       "shutdown": false,
       "isReboot": true,
-      "reboot_time": [6, 20]
+      "reboot_time": [6, 15, 20]
     }
   }
