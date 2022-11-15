@@ -33,6 +33,7 @@
       "measurment_intervall": 10,
       "measurment_update": 350,
       "shutdown": false,
+      "isReboot": true,
       "reboot_time": [6, 20]
     }
   }

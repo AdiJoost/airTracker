@@ -1,15 +1,12 @@
-#application-specific
 *.csv
 main_log.txt
-data.db
-daemon_log.txt
-meassurments_log.txt
+error_log.txt
+tok.txt
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
 *$py.class
-
 
 # C extensions
 *.so
@@ -135,7 +132,3 @@ dmypy.json
 
 # Pyre type checker
 .pyre/
-log/daemon_log.txt
-log/error_log.txt
-.gitignore
-log/noqueue.txt
