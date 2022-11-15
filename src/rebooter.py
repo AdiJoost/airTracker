@@ -53,7 +53,6 @@ class Rebooter():
                 if (counter == update_intervall):
                     counter = 0
                     now = datetime.now()
-                    Logger.log(__name__, "Check Reboot")
                     if (now.hour in controls[Global_Controller.REBOOTER]\
                         [Global_Controller.REBOOT_TIME]) and\
                         controls[Global_Controller.REBOOTER][Global_Controller.IS_REBOOT]:
