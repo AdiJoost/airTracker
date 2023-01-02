@@ -4,7 +4,7 @@ Since it is not thread-Safe, make sure, that every method is
 only used in one script.
 """
 
-#import adafruit_dht
+
 #import board
 #from src.gpio_calls import read_co2_sensor, gpio_setup, set_led
 from random import randint
@@ -19,7 +19,7 @@ class GPIO_Handler():
     PURPLE = "purple"
     TURN_OFF ="turn_off"
     def __init__(self):
-        #self.dht_sensor = adafruit_dht.DHT11(board.D21)
+
         self.redPin = 20
         self.bluePin = 21
         self.greenPin = 26
@@ -74,7 +74,7 @@ class GPIO_Handler():
         humidity = randint(30,60)
         while not has_valid_result:
             try:
-                #humidity = self.dht_sensor.humidity
+
                 has_valid_result = True
             except:
                 continue
