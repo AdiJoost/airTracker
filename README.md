@@ -1,17 +1,10 @@
 # airTracker
-This repository holds the code for a student-project about air quality
+This repository holds the code for a student-project about air quality.
 
 
-On the Raspberry PI(I used RaspberryOS 64 lite):
--Update your Pi
--install git with sudo apt-get install git-core
--install pip with sudo apt-get install python3-pip
--install virtualenv with sudo pip install virtualenv
--create virtual env
--install requirements.txt
--pip3 install adafruit-circuitpython-dht
--sudo apt-get install libgpiod2
--remove # in gpio_handler
+## requirements.txt
+The requirements to start the Software on a Python instance. If only the requirements are installed, the Software is started in simulation-mode
 
--on the pi, enable I2C
+##requirements_for_pi.txt
+If the software is run on an AirTracker, additionally to the requirements.txt, install all libraries in requirements_for_pi.txt. Edit the gpio_handler.py file by uncommenting all lines.
 
