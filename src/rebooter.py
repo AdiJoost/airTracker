@@ -1,3 +1,11 @@
+"""
+Author: Adrian Joost
+Created: September, 2022
+Note:
+
+Reboots the Pi on given times over the day.
+"""
+
 from log.logger import Logger
 from datetime import datetime
 import time

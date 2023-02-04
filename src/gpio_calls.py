@@ -1,4 +1,8 @@
 """
+Author: Adrian Joost
+Created: September, 2022
+Note:
+ 
 Only works on pi, functions are imported to gpio_handler to
 reduce amount of # needed to be removed for pi setup
 """

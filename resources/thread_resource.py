@@ -1,6 +1,9 @@
 """
-Created: 30.09
-nerve_center is a Ressource, that is talking to the global_controller of the application.
+Author: Adrian Joost
+Created: September, 2022
+Note:
+
+Thread_resource is for manual control over the Daemon-Threads.
 """
 
 from flask_restful import Resource, reqparse

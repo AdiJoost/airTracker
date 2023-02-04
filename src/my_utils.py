@@ -1,6 +1,10 @@
 """
-Created: 30.09
-my_utils hold useful functions for the whole application
+
+Author: Adrian Joost
+Created: September, 2022
+Note:
+
+Hold useful functions for the whole application
 """
 from global_controller.global_controller import Global_Controller
 from flask import make_response, jsonify

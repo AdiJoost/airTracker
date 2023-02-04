@@ -1,3 +1,12 @@
+"""
+Author: Adrian Joost
+created: July 2022
+Notes:
+The Logger-class handles all logging for the 
+whole application. It also is responsible for 
+creating and writing to the datasheets.
+"""
+
 import os.path
 from datetime import datetime
 

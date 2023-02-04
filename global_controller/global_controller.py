@@ -1,6 +1,8 @@
 """
-Date: 29.09.2022, 14:13
 Author: Adrian Joost
+created: September 2022
+Notes:
+
 This Class handles a controler.json file.
 """
 import os

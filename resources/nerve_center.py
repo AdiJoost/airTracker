@@ -1,5 +1,8 @@
 """
-Created: 30.09
+Author: Adrian Joost
+Created: September, 2022
+Note:
+
 nerve_center is a Ressource, that is talking to the global_controller of the application.
 """
 

@@ -1,3 +1,12 @@
+"""
+Author: Adrian Joost
+created: September 2022
+Notes:
+app.py is the entry-point for the whole application.
+Even though meta-data for a database is added, no real
+database is implemented at the moment.
+"""
+
 from concurrent.futures import thread
 from flask import Flask, render_template
 from flask_restful import Api
@@ -48,7 +57,7 @@ if __name__ == "__main__":
     set_global_controller(global_controller)
     board_controller.start_thread(Global_Controller.MEASURE_DEMON)
     board_controller.start_thread(Global_Controller.LED_DEAMON)
-    dboard_controller.start_thread(Global_Controller.REBOOTER)
+    board_controller.start_thread(Global_Controller.REBOOTER)
     
     #start app
     app.run(port=5000, host="0.0.0.0", debug=True, threaded=True)

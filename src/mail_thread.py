@@ -1,3 +1,12 @@
+"""
+Author: Adrian Joost
+Created: September, 2022
+Note:
+
+Handles mailing to the Mail-List. 
+Currently not in use
+"""
+
 from datetime import datetime, timedelta
 from log.logger import Logger
 import time

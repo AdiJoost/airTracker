@@ -1,3 +1,12 @@
+"""
+Author: Adrian Joost
+Created: September, 2022
+Note:
+
+Handles reading and writing measurments in given
+intervall
+"""
+
 from log.logger import Logger
 from datetime import datetime
 import time

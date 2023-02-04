@@ -1,3 +1,12 @@
+"""
+Author: Adrian Joost
+created: September 2022
+Notes:
+
+Hellper-functions for sending E-Mails. 
+Currently not functional.
+"""
+
 import smtplib, ssl
 from email.mime.text import MIMEText
 from email.mime.multipart import MIMEMultipart

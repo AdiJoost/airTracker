@@ -1,6 +1,11 @@
 """
-This Class handles all interactions with GPIO's and is the only class, that is responsible for
-writing to csv-data-files.
+Author: Adrian Joost
+Created: September, 2022
+Note:
+
+Board_Controller is responsible for spawning Daemons.
+It is a singleton, but the benefits of a singleton are
+not usefull for the current version 0.1.
 """
 
 import time

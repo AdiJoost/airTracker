@@ -1,4 +1,10 @@
 """
+Author: Adrian Joost
+Created: September, 2022
+Note:
+
+Remove all # to enable proper functionallity on actual AirTracker.
+With # in, the Software is in Simulation-Mode.
 GPIO_handler handles all interactions with the GPIO on PI.
 Since it is not thread-Safe, make sure, that every method is 
 only used in one script.

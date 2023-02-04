@@ -1,3 +1,11 @@
+"""
+Author: Adrian Joost
+Created: September, 2022
+Note:
+
+Handles RGB-LED on Pi
+"""
+
 from src.gpio_handler import GPIO_Handler
 from log.logger import Logger
 import time

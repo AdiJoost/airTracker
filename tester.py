@@ -1,3 +1,11 @@
+"""
+Author: Adrian Joost
+Created: September, 2022
+Note:
+
+Tryout scripts during development
+"""
+
 #from Board_Controller import Board_Controller
 from log.logger import Logger
 import time
